@@ -1,0 +1,226 @@
+/**
+ * NOXARA - Mobile-First Responsive CSS
+ * Base: 360px+, Tablet: 768px+, Desktop: 1024px+
+ */
+
+/* ============================================================
+   BASE / MOBILE (360px+)
+   ============================================================ */
+
+/* Page layout constrain */
+.page-container { max-width: 480px; margin: 0 auto; }
+.main-content { padding-bottom: calc(64px + 16px); }
+
+/* Bottom nav — fixed, full-width mobile */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 64px; z-index: 150; max-width: 480px; margin: 0 auto;
+  left: 50%; transform: translateX(-50%);
+}
+.bottom-nav-item { min-height: 48px; min-width: 48px; padding: 6px 8px; }
+.bottom-nav-fab { width: 56px; height: 56px; transform: translateY(-8px); }
+
+/* Touch targets — minimum 48px */
+.btn, .nav-item, .tab-btn, .filter-chip, .numpad-btn,
+.fab-item, .quick-item, .bottom-nav-item { min-height: 44px; touch-action: manipulation; }
+
+/* Toast position — mobile bottom */
+#toast-container {
+  bottom: calc(64px + 8px); left: 16px; right: 16px; top: auto;
+  display: flex; flex-direction: column-reverse; gap: 8px;
+}
+.toast { width: 100%; max-width: 100%; border-radius: 12px; }
+
+/* Notification panel — full slide from right */
+.notif-panel { width: 100%; max-width: 100%; }
+
+/* Auth card padding mobile */
+.auth-card { padding: 24px 20px; border-radius: 20px; }
+.auth-container { padding: 16px; align-items: flex-end; padding-bottom: 24px; min-height: 100vh; }
+
+/* Tables — scroll on mobile */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+.data-table { min-width: 520px; }
+
+/* Products grid — 2 columns on mobile */
+.products-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* Wallet — 2 column grid */
+.wallet-cards { grid-template-columns: 1fr 1fr; }
+.main-wallet { grid-column: 1 / -1; }
+
+/* Quick menu — 4 cols */
+.quick-menu { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+/* Stats row — 2 col on very small */
+.stats-row { grid-template-columns: repeat(2, 1fr); }
+
+/* Chat page — full height */
+.chat-page { height: calc(100dvh - 56px); }
+.chat-input-area { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+
+/* Modal — bottom sheet */
+.modal-overlay { align-items: flex-end; padding: 0; }
+.modal { border-radius: 20px 20px 0 0; border-bottom: none; max-height: 92dvh; }
+.center-modal .modal { border-radius: 20px; margin: 16px; width: auto; }
+
+/* Sidebar */
+.sidebar { width: 280px; }
+
+/* Admin sidebar hidden on mobile */
+.admin-sidebar { transform: translateX(-240px); }
+.admin-main { margin-left: 0; }
+.admin-sidebar-toggle { display: flex !important; }
+.admin-sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.5); }
+
+/* Admin content padding */
+.admin-content { padding: 16px 14px 32px; }
+.admin-topbar { padding: 0 16px; }
+
+/* FAB menu full width on mobile */
+.fab-menu { width: calc(100% - 24px); bottom: calc(64px + 10px); }
+
+/* Section padding on mobile */
+.section { padding: 16px 14px; }
+
+/* Banner slider aspect ratio */
+.banner-slide img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
+
+/* Podium */
+.podium-wrap { padding: 16px 12px; }
+
+/* Referral tree nodes */
+.tree-node { padding: 10px 12px; }
+
+/* Safe area for notch/home indicator */
+.topbar { padding-top: env(safe-area-inset-top); }
+.bottom-nav { padding-bottom: env(safe-area-inset-bottom); height: calc(64px + env(safe-area-inset-bottom)); }
+
+
+/* ============================================================
+   TABLET (768px+)
+   ============================================================ */
+@media (min-width: 768px) {
+  :root { --bottom-nav-h: 0px; }
+
+  .bottom-nav { display: none; }
+  .main-content { padding-bottom: 0; }
+  .page-container { max-width: 100%; }
+
+  /* Toast — top right */
+  #toast-container {
+    top: 80px; right: 20px; bottom: auto; left: auto;
+    flex-direction: column; width: auto;
+  }
+  .toast { max-width: 360px; }
+
+  /* Auth */
+  .auth-container { align-items: center; padding: 40px 20px; }
+  .auth-card { border-radius: 20px; }
+
+  /* Notification panel */
+  .notif-panel { width: 360px; }
+
+  /* Wallet grid — more columns */
+  .wallet-cards { grid-template-columns: repeat(3, 1fr); }
+  .main-wallet { grid-column: 1 / -1; }
+
+  /* Stats 3-4 cols */
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+
+  /* Products — 3 col */
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Quick menu — 6 cols */
+  .quick-menu { grid-template-columns: repeat(6, 1fr); }
+
+  /* Modal — center sheet on tablet */
+  .modal-overlay { align-items: center; padding: 24px; }
+  .modal { border-radius: 20px; border: 1px solid var(--border); max-height: 80vh; }
+
+  /* Sidebar show on tablet as overlay toggled */
+  .admin-main { margin-left: 0; }
+
+  /* Tables don't need scroll on tablet */
+  .data-table { min-width: unset; }
+  .table-wrap { border-radius: 12px; }
+
+  /* Banner height */
+  .banner-slide img { height: 200px; }
+
+  /* Section spacing */
+  .section { padding: 20px; }
+
+  /* Chat layout */
+  .chat-page { max-width: 600px; margin: 0 auto; }
+}
+
+/* ============================================================
+   DESKTOP (1024px+)
+   ============================================================ */
+@media (min-width: 1024px) {
+  body { overflow-x: hidden; }
+
+  /* Admin layout — persistent sidebar */
+  .admin-layout { display: flex; }
+  .admin-sidebar { transform: translateX(0) !important; position: fixed; }
+  .admin-main { margin-left: 240px; }
+  .admin-main.expanded { margin-left: 0; }
+  .admin-sidebar-toggle { display: flex !important; }
+
+  /* Stats 4 cols */
+  .stats-row { grid-template-columns: repeat(4, 1fr); }
+
+  /* Products — 3-4 cols */
+  .products-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  /* Packages — 2 cols */
+  .packages-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* Wallet 4 cols */
+  .wallet-cards { grid-template-columns: repeat(4, 1fr); }
+  .main-wallet { grid-column: span 2; }
+
+  /* Banner slider */
+  .banner-slide img { height: 240px; }
+
+  /* Section spacing */
+  .section { padding: 24px; }
+
+  /* Topbar — wider */
+  .topbar-inner { max-width: 100%; padding: 0 24px; }
+
+  /* Notif panel */
+  .notif-panel { width: 380px; }
+
+  /* Modal — always centered */
+  .modal-overlay { align-items: center; padding: 40px; }
+  .modal { max-width: 540px; border-radius: 20px; max-height: 85vh; }
+
+  /* Sidebar always visible on desktop user side */
+  /* (left drawer replaces bottom nav) */
+
+  /* Table full width no min */
+  .data-table { min-width: unset; font-size: 14px; }
+
+  /* Quick menu */
+  .quick-menu { grid-template-columns: repeat(8, 1fr); }
+}
+
+/* ============================================================
+   LARGE DESKTOP (1280px+)
+   ============================================================ */
+@media (min-width: 1280px) {
+  .admin-content { padding: 24px 32px 48px; }
+  .products-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================================
+   PRINT RESET
+   ============================================================ */
+@media print {
+  .bottom-nav, .topbar, .sidebar, .fab-menu,
+  .notif-panel, .modal-overlay, #toast-container { display: none !important; }
+  .main-content { padding-bottom: 0 !important; }
+  body { background: #fff; color: #000; }
+}

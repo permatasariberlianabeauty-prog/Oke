@@ -1,0 +1,5 @@
+<?php
+// NOXARA - File ini dibuat otomatis oleh Install Wizard
+// Jangan edit manual, gunakan install wizard atau edit config.php langsung
+// File ini menandakan bahwa website sudah dikonfigurasi
+define('CONFIG_ACTIVE', true);

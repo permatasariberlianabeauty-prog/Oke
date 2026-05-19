@@ -1,0 +1,11 @@
+# Blokir eksekusi file PHP di folder uploads
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Hanya izinkan akses ke file gambar dan dokumen
+<FilesMatch "\.(jpg|jpeg|png|webp|gif|pdf)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>

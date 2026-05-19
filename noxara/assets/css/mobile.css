@@ -1,6 +1,7 @@
 /**
  * NOXARA - Mobile-First Responsive CSS
- * Base: 360px+, Tablet: 768px+, Desktop: 1024px+
+ * Theme: Premium Dark Futuristic
+ * Version: 2.0.0
  */
 
 /* ============================================================
@@ -9,16 +10,34 @@
 
 /* Page layout constrain */
 .page-container { max-width: 480px; margin: 0 auto; }
-.main-content { padding-bottom: calc(64px + 16px); }
+.main-content   { padding-bottom: calc(64px + 16px); }
 
-/* Bottom nav — fixed, full-width mobile */
+/* Auth page — full screen gradient bg */
+.auth-body {
+  background: #0A0E1A;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(0,212,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(123,47,255,0.08) 0%, transparent 50%);
+}
+
+/* Bottom nav — glass effect */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
   height: 64px; z-index: 150; max-width: 480px; margin: 0 auto;
   left: 50%; transform: translateX(-50%);
+  background: rgba(10,14,26,0.95);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.06), 0 -4px 20px rgba(0,0,0,0.3);
 }
 .bottom-nav-item { min-height: 48px; min-width: 48px; padding: 6px 8px; }
-.bottom-nav-fab { width: 56px; height: 56px; transform: translateY(-8px); }
+.bottom-nav-fab  { width: 56px; height: 56px; transform: translateY(-10px); }
+
+/* Topbar glass */
+.topbar {
+  background: rgba(10,14,26,0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
 
 /* Touch targets — minimum 48px */
 .btn, .nav-item, .tab-btn, .filter-chip, .numpad-btn,
@@ -35,7 +54,7 @@
 .notif-panel { width: 100%; max-width: 100%; }
 
 /* Auth card padding mobile */
-.auth-card { padding: 24px 20px; border-radius: 20px; }
+.auth-card    { padding: 24px 20px; border-radius: 20px; }
 .auth-container { padding: 16px; align-items: flex-end; padding-bottom: 24px; min-height: 100vh; }
 
 /* Tables — scroll on mobile */
@@ -47,10 +66,23 @@
 
 /* Wallet — 2 column grid */
 .wallet-cards { grid-template-columns: 1fr 1fr; }
-.main-wallet { grid-column: 1 / -1; }
+.main-wallet  { grid-column: 1 / -1; }
 
-/* Quick menu — 4 cols */
-.quick-menu { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+/* Wallet cards on mobile — full glow */
+.wallet-card {
+  background: var(--bg-card);
+}
+.main-wallet {
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(13,21,40,1) 70%);
+  border-left: 3px solid #00D4FF;
+}
+.free-wallet {
+  background: linear-gradient(135deg, rgba(123,47,255,0.1) 0%, rgba(13,21,40,1) 70%);
+  border-left: 3px solid #7B2FFF;
+}
+
+/* Quick menu — 5 cols */
+.quick-menu { grid-template-columns: repeat(5, 1fr); gap: 10px; }
 
 /* Stats row — 2 col on very small */
 .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -69,13 +101,16 @@
 
 /* Admin sidebar hidden on mobile */
 .admin-sidebar { transform: translateX(-240px); }
-.admin-main { margin-left: 0; }
+.admin-main    { margin-left: 0; }
 .admin-sidebar-toggle { display: flex !important; }
 .admin-sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.5); }
 
 /* Admin content padding */
 .admin-content { padding: 16px 14px 32px; }
-.admin-topbar { padding: 0 16px; }
+.admin-topbar  { padding: 0 16px; }
+
+/* Admin stats grid — 2 cols on mobile */
+.admin-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
 /* FAB menu full width on mobile */
 .fab-menu { width: calc(100% - 24px); bottom: calc(64px + 10px); }
@@ -84,7 +119,7 @@
 .section { padding: 16px 14px; }
 
 /* Banner slider aspect ratio */
-.banner-slide img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
+.banner-img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
 
 /* Podium */
 .podium-wrap { padding: 16px 12px; }
@@ -92,10 +127,41 @@
 /* Referral tree nodes */
 .tree-node { padding: 10px 12px; }
 
-/* Safe area for notch/home indicator */
-.topbar { padding-top: env(safe-area-inset-top); }
-.bottom-nav { padding-bottom: env(safe-area-inset-bottom); height: calc(64px + env(safe-area-inset-bottom)); }
+/* Package card with left gradient border */
+.package-card {
+  border-left: 3px solid var(--cyan, #00D4FF);
+  background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, var(--bg-card, #0D1528) 40%);
+}
 
+/* Notice banner improved */
+.notice-banner {
+  border-radius: 12px; padding: 14px 16px; margin: 0 16px 12px;
+}
+.free-balance-note {
+  font-size: 11px; color: rgba(255,149,0,0.9); margin-top: 6px;
+}
+
+/* Stat cards improved */
+.stat-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, var(--bg-card, #0D1528) 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* FAB button premium */
+.bottom-nav-fab {
+  background: linear-gradient(135deg, #00D4FF, #7B2FFF);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.15), 0 0 20px rgba(0,212,255,0.4), 0 4px 16px rgba(0,0,0,0.5);
+}
+
+/* Page container padding */
+.page-container { padding: 0; }
+
+/* Smooth page transitions */
+.main-content { transition: opacity 0.15s ease; }
+
+/* Safe area for notch/home indicator */
+.topbar      { padding-top: env(safe-area-inset-top); }
+.bottom-nav  { padding-bottom: env(safe-area-inset-bottom); height: calc(64px + env(safe-area-inset-bottom)); }
 
 /* ============================================================
    TABLET (768px+)
@@ -103,7 +169,7 @@
 @media (min-width: 768px) {
   :root { --bottom-nav-h: 0px; }
 
-  .bottom-nav { display: none; }
+  .bottom-nav  { display: none; }
   .main-content { padding-bottom: 0; }
   .page-container { max-width: 100%; }
 
@@ -123,7 +189,7 @@
 
   /* Wallet grid — more columns */
   .wallet-cards { grid-template-columns: repeat(3, 1fr); }
-  .main-wallet { grid-column: 1 / -1; }
+  .main-wallet  { grid-column: 1 / -1; }
 
   /* Stats 3-4 cols */
   .stats-row { grid-template-columns: repeat(3, 1fr); }
@@ -136,9 +202,9 @@
 
   /* Modal — center sheet on tablet */
   .modal-overlay { align-items: center; padding: 24px; }
-  .modal { border-radius: 20px; border: 1px solid var(--border); max-height: 80vh; }
+  .modal { border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); max-height: 80vh; }
 
-  /* Sidebar show on tablet as overlay toggled */
+  /* Admin sidebar on tablet */
   .admin-main { margin-left: 0; }
 
   /* Tables don't need scroll on tablet */
@@ -146,13 +212,16 @@
   .table-wrap { border-radius: 12px; }
 
   /* Banner height */
-  .banner-slide img { height: 200px; }
+  .banner-img { height: 200px; }
 
   /* Section spacing */
   .section { padding: 20px; }
 
   /* Chat layout */
   .chat-page { max-width: 600px; margin: 0 auto; }
+
+  /* Admin stats 4 cols on tablet */
+  .admin-stats-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ============================================================
@@ -164,7 +233,7 @@
   /* Admin layout — persistent sidebar */
   .admin-layout { display: flex; }
   .admin-sidebar { transform: translateX(0) !important; position: fixed; }
-  .admin-main { margin-left: 240px; }
+  .admin-main    { margin-left: 240px; }
   .admin-main.expanded { margin-left: 0; }
   .admin-sidebar-toggle { display: flex !important; }
 
@@ -179,10 +248,10 @@
 
   /* Wallet 4 cols */
   .wallet-cards { grid-template-columns: repeat(4, 1fr); }
-  .main-wallet { grid-column: span 2; }
+  .main-wallet  { grid-column: span 2; }
 
   /* Banner slider */
-  .banner-slide img { height: 240px; }
+  .banner-img { height: 240px; }
 
   /* Section spacing */
   .section { padding: 24px; }
@@ -196,9 +265,6 @@
   /* Modal — always centered */
   .modal-overlay { align-items: center; padding: 40px; }
   .modal { max-width: 540px; border-radius: 20px; max-height: 85vh; }
-
-  /* Sidebar always visible on desktop user side */
-  /* (left drawer replaces bottom nav) */
 
   /* Table full width no min */
   .data-table { min-width: unset; font-size: 14px; }

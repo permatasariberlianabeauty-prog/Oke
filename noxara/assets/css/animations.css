@@ -1,22 +1,29 @@
 /**
  * NOXARA - Animations CSS
- * All keyframes and animation utilities
+ * Premium Dark Futuristic Animations
+ * Version: 2.0.0
  */
 
 /* ============================================================
    KEYFRAME ANIMATIONS
    ============================================================ */
 
-/* Float — mining robot / gift box */
+/* Float — mining robot / gift box / elements */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-12px); }
 }
 
-/* Glow Pulse — cyan/purple card glow */
+/* Glow Pulse — cyan card glow */
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 10px rgba(0,212,255,0.25), 0 0 30px rgba(0,212,255,0.1); }
   50%       { box-shadow: 0 0 20px rgba(0,212,255,0.5), 0 0 50px rgba(123,47,255,0.2); }
+}
+
+/* Glow Pulse Purple */
+@keyframes glow-pulse-purple {
+  0%, 100% { box-shadow: 0 0 10px rgba(123,47,255,0.25), 0 0 30px rgba(123,47,255,0.1); }
+  50%       { box-shadow: 0 0 20px rgba(123,47,255,0.5), 0 0 50px rgba(0,212,255,0.15); }
 }
 
 /* Slide In Right — desktop toast */
@@ -27,14 +34,14 @@
 
 /* Slide In Up — bottom sheets / mobile toasts */
 @keyframes slide-in-up {
-  from { transform: translateY(100%); opacity: 0; }
+  from { transform: translateY(30px); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
 
-/* Slide Out Down */
-@keyframes slide-out-down {
-  from { transform: translateY(0);    opacity: 1; }
-  to   { transform: translateY(100%); opacity: 0; }
+/* Slide Out Right */
+@keyframes slide-out-right {
+  from { transform: translateX(0);   opacity: 1; }
+  to   { transform: translateX(110%); opacity: 0; }
 }
 
 /* Zoom In — modal */
@@ -43,13 +50,25 @@
   to   { transform: scale(1);    opacity: 1; }
 }
 
+/* Zoom Out */
+@keyframes zoom-out {
+  from { transform: scale(1);    opacity: 1; }
+  to   { transform: scale(0.88); opacity: 0; }
+}
+
 /* Fade In */
-@keyframes animate-fade {
+@keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-/* Shake — claim button error */
+/* Fade Out */
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Shake — error feedback */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   15%       { transform: translateX(-8px); }
@@ -69,14 +88,8 @@
 
 /* Coin Fall / Burst */
 @keyframes coin-fall {
-  0%   { transform: translate(0, 0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--tx, 0), var(--ty, -60px)) scale(0); opacity: 0; }
-}
-
-/* Skeleton Shimmer */
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+  0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-80px) scale(0) rotate(360deg); opacity: 0; }
 }
 
 /* Marquee horizontal scroll */
@@ -85,24 +98,74 @@
   100% { transform: translateX(-50%); }
 }
 
-/* Scan light sweep */
-@keyframes scan-light {
-  0%   { left: -100%; }
-  100% { left: 200%; }
-}
-
 /* Spin — loading indicator */
 @keyframes spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
+/* Shimmer (general) */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Skeleton Shimmer */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Scan light sweep */
+@keyframes scan-light {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Border Glow animation */
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(0,212,255,0.3); box-shadow: 0 0 8px rgba(0,212,255,0.2); }
+  50%       { border-color: rgba(123,47,255,0.5); box-shadow: 0 0 20px rgba(123,47,255,0.3); }
+}
+
+/* Gradient Shift — claim button */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Button Pulse — btn-glow */
+@keyframes btn-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0,212,255,0.3), 0 0 0 0 rgba(0,212,255,0.3); }
+  50%       { box-shadow: 0 4px 30px rgba(0,212,255,0.5), 0 0 0 8px rgba(0,212,255,0); }
+}
+
+/* Claim Pulse — outer ring */
+@keyframes claim-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,212,255,0.5), 0 6px 24px rgba(0,212,255,0.4); }
+  70%  { box-shadow: 0 0 0 14px rgba(0,212,255,0), 0 6px 24px rgba(0,212,255,0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(0,212,255,0), 0 6px 24px rgba(0,212,255,0.4); }
+}
+
+/* VIP5 Shimmer — gold shimmer */
+@keyframes vip5-shimmer {
+  0%, 100% { box-shadow: 0 0 10px rgba(255,215,0,0.3), 0 0 20px rgba(255,149,0,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(255,215,0,0.6), 0 0 40px rgba(255,149,0,0.4); }
+}
+
 /* Particle Float — background dots */
 @keyframes particle-float {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  0%   { transform: translate(0, 0) scale(1);                          opacity: 0.4; }
   33%  { transform: translate(var(--px1,10px), var(--py1,-20px)) scale(1.1); opacity: 0.6; }
-  66%  { transform: translate(var(--px2,-10px), var(--py2,-40px)) scale(0.9); opacity: 0.3; }
-  100% { transform: translate(0, -80px) scale(0); opacity: 0; }
+  66%  { transform: translate(var(--px2,-10px),var(--py2,-40px)) scale(0.9); opacity: 0.3; }
+  100% { transform: translate(0, -80px) scale(0);                     opacity: 0; }
+}
+
+/* Fade in (used as class name) */
+@keyframes animate-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* Count-up / number reveal */
@@ -111,68 +174,76 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Pulse ring */
-@keyframes pulse-ring {
-  0%   { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0,212,255,0.5); }
-  70%  { transform: scale(1);   box-shadow: 0 0 0 14px rgba(0,212,255,0); }
-  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0,212,255,0); }
+/* Toast Progress bar */
+@keyframes toast-progress {
+  from { width: 100%; }
+  to   { width: 0%; }
 }
 
-/* Bounce */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8,0,1,1); }
-  50%       { transform: translateY(-12px); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+/* Reveal up */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Rotate loading ring */
-@keyframes rotate-ring {
-  from { stroke-dashoffset: 280; }
-  to   { stroke-dashoffset: 0; }
+/* Bounce In */
+@keyframes bounce-in {
+  0%   { transform: scale(0.3);  opacity: 0; }
+  50%  { transform: scale(1.05); opacity: 1; }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* Robot animations */
+@keyframes robot-blink {
+  0%, 85%, 100% { transform: scaleY(1); }
+  90%           { transform: scaleY(0.1); }
+}
+
+@keyframes robot-arm-left {
+  0%, 100% { transform: rotate(-10deg); }
+  50%       { transform: rotate(15deg); }
+}
+
+@keyframes robot-arm-right {
+  0%, 100% { transform: rotate(10deg); }
+  50%       { transform: rotate(-15deg); }
+}
+
+@keyframes robot-eye-pulse {
+  0%, 100% { opacity: 1; fill: #00D4FF; }
+  50%       { opacity: 0.5; fill: #7B2FFF; }
+}
+
+@keyframes antenna-pulse {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 4px rgba(0,212,255,0.6)); }
+  50%       { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(0,212,255,1)); }
 }
 
 
 /* ============================================================
    ANIMATION UTILITY CLASSES
    ============================================================ */
-.animate-zoom      { animation: zoom-in 0.25s ease both; }
-.animate-fade      { animation: animate-fade 0.3s ease both; }
-.animate-slide-up  { animation: slide-in-up 0.3s ease both; }
+.floating           { animation: float 3.5s ease-in-out infinite; }
+.animate-zoom       { animation: zoom-in 0.3s ease both; }
+.animate-fade       { animation: fade-in 0.3s ease both; }
+.animate-slide-up   { animation: slide-in-up 0.3s ease both; }
 .animate-slide-right { animation: slide-in-right 0.3s ease both; }
-.animate-float     { animation: float 3s ease-in-out infinite; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
 .animate-glow-pulse { animation: glow-pulse 2.5s ease-in-out infinite; }
-.animate-spin      { animation: spin 0.8s linear infinite; }
-.animate-shake     { animation: shake 0.5s ease; }
-.animate-bounce    { animation: bounce 1s ease-in-out infinite; }
-.animate-pulse     { animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; }
+.animate-spin       { animation: spin 0.8s linear infinite; }
+.animate-shake      { animation: shake 0.5s ease; }
+.animate-bounce-in  { animation: bounce-in 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
 
 /* Toast enter / exit */
 .toast-enter { animation: slide-in-right 0.3s ease forwards; }
-.toast-exit  { animation: slide-in-right 0.3s ease reverse forwards; }
+.toast-exit  { animation: slide-out-right 0.3s ease forwards; }
 
 /* Mobile toast (bottom) */
 @media (max-width: 767px) {
   .toast-enter { animation: slide-in-up 0.3s ease forwards; }
-  .toast-exit  { animation: slide-out-down 0.3s ease forwards; }
+  .toast-exit  { animation: fade-out 0.3s ease forwards; }
 }
-
-/* ============================================================
-   SKELETON LOADING
-   ============================================================ */
-.skeleton-loading {
-  background: linear-gradient(
-    90deg,
-    var(--bg-elevated) 0%,
-    rgba(255,255,255,0.07) 40%,
-    var(--bg-elevated) 80%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
-  border-radius: 6px;
-}
-.skeleton-text   { height: 14px; border-radius: 7px; }
-.skeleton-title  { height: 20px; border-radius: 10px; }
-.skeleton-avatar { border-radius: 50%; }
-.skeleton-card   { border-radius: 12px; }
 
 /* ============================================================
    SCROLL REVEAL
@@ -188,57 +259,103 @@
 .reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ============================================================
+   SKELETON LOADING
+   ============================================================ */
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    var(--bg-elevated, #131E38) 0%,
+    rgba(255,255,255,0.07) 40%,
+    var(--bg-elevated, #131E38) 80%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: 6px;
+}
+.skeleton-text   { height: 14px; border-radius: 7px; }
+.skeleton-title  { height: 20px; border-radius: 10px; }
+.skeleton-avatar { border-radius: 50%; }
+.skeleton-card   { border-radius: 12px; }
+
+/* ============================================================
    PROGRESS BAR ANIMATION
    ============================================================ */
 .progress-fill { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
-.progress-fill.animated { will-change: width; }
+.progress-fill.animated { will-change: width; animation: reveal-up 0.5s ease; }
 
 /* ============================================================
    SCAN LIGHT ON CARDS
    ============================================================ */
 .card-scan { position: relative; overflow: hidden; }
-.card-scan::before {
+.card-scan::after {
   content: ''; position: absolute; top: 0; bottom: 0; width: 80px;
   background: linear-gradient(90deg, transparent, rgba(0,212,255,0.08), transparent);
   animation: scan-light 3s ease-in-out infinite; z-index: 1; pointer-events: none;
+  left: -100%;
 }
 
 /* ============================================================
    LOADING OVERLAY
    ============================================================ */
 .loading-overlay {
-  position: fixed; inset: 0; background: rgba(10,14,26,0.85);
+  position: fixed; inset: 0; background: rgba(10,14,26,0.9);
+  backdrop-filter: blur(4px);
   z-index: 9990; display: flex; align-items: center; justify-content: center;
   flex-direction: column; gap: 16px;
 }
 .loading-overlay.hidden { display: none; }
 .loading-spinner {
   width: 48px; height: 48px; border: 3px solid rgba(0,212,255,0.2);
-  border-top-color: var(--cyan, #00D4FF); border-radius: 50%;
+  border-top-color: #00D4FF; border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 .loading-overlay p { color: rgba(0,212,255,0.7); font-size: 13px; font-weight: 500; }
 
 /* ============================================================
-   PARTICLE CANVAS
+   PARTICLE BACKGROUND
    ============================================================ */
-#particle-canvas {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; z-index: 0; opacity: 0.6;
+.particles-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
 }
+.particle {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.6) 0%, transparent 70%);
+  animation: particle-float var(--dur, 6s) var(--delay, 0s) ease-in-out infinite alternate;
+  opacity: 0.3;
+}
+
+/* ============================================================
+   CONFETTI & COIN BURST
+   ============================================================ */
+.confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden; }
+.confetti-piece {
+  position: absolute; width: 10px; height: 10px; border-radius: 2px;
+  animation: confetti-fall var(--dur, 2s) var(--delay, 0s) ease-in forwards;
+  top: -20px;
+}
+.coin-burst { position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden; }
+.coin-particle {
+  position: absolute; font-size: var(--size, 20px); line-height: 1;
+  left: var(--x, 50vw); top: 80%;
+  animation: coin-fall 1.5s var(--delay, 0s) ease-out forwards;
+}
+
+/* ============================================================
+   ROBOT CSS ANIMATION CLASSES
+   ============================================================ */
+.robot-eye-l  { animation: robot-blink 3s infinite; }
+.robot-eye-r  { animation: robot-blink 3s infinite 0.3s; }
+.robot-antenna { animation: antenna-pulse 1.5s ease-in-out infinite; }
+.robot-arm-l  { animation: robot-arm-left 2s ease-in-out infinite; transform-origin: top center; }
+.robot-arm-r  { animation: robot-arm-right 2s ease-in-out infinite 0.5s; transform-origin: top center; }
 
 /* ============================================================
    BANNER SLIDER
    ============================================================ */
-.banner-slider { position: relative; overflow: hidden; border-radius: 12px; }
-.banner-track { display: flex; transition: transform 0.4s ease; }
-.banner-slide { flex: 0 0 100%; }
-.banner-dots { display: flex; justify-content: center; gap: 6px; padding: 10px 0 4px; }
-.banner-dot {
-  width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.25);
-  cursor: pointer; transition: all 0.25s;
-}
-.banner-dot.active { width: 20px; background: var(--cyan, #00D4FF); }
+.banner-slider { position: relative; overflow: hidden; }
+.banner-dots { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; }
+.banner-dot { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.25s; }
+.banner-dot.active { width: 20px; background: #00D4FF; box-shadow: 0 0 8px rgba(0,212,255,0.6); }
 
 /* ============================================================
    COUNT-UP NUMBER

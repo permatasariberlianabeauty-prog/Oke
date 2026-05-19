@@ -52,9 +52,9 @@ $pageTitle = 'Masuk';
   </div>
 
   <!-- Particle Background -->
-  <div class="particles-bg" id="particlesBg"></div>
+  <canvas id="particlesBg" class="particles-bg"></canvas>
 
-  <div class="auth-card">
+  <div class="auth-card" style="position:relative;z-index:1;">
     <h1 class="auth-title">Masuk Akun</h1>
     <p class="auth-subtitle">Selamat datang kembali di NOXARA</p>
 
@@ -116,5 +116,27 @@ document.getElementById('loginForm').addEventListener('submit',function(){
   document.getElementById('loginBtn').querySelector('.btn-text').textContent='Memproses...';
   document.getElementById('loginBtn').disabled=true;
 });
+// Particle canvas animation
+(function(){
+  var c=document.getElementById('particlesBg');
+  if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');
+  c.width=window.innerWidth; c.height=window.innerHeight;
+  var pts=[];
+  for(var i=0;i<60;i++){pts.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,a:Math.random()*0.4+0.1,c:Math.random()>0.5?'0,212,255':'123,47,255'});}
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    pts.forEach(function(p){
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba('+p.c+','+p.a+')';ctx.fill();
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>c.width)p.vx*=-1;
+      if(p.y<0||p.y>c.height)p.vy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize',function(){c.width=window.innerWidth;c.height=window.innerHeight;});
+})();
 </script>
 </body></html>

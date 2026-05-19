@@ -68,6 +68,7 @@ require_once INCLUDES_PATH . '/header.php';
 ?>
 
 <div class="page-container dashboard-page">
+<div class="dashboard-bg-overlay"></div>
 
   <!-- Banner Slider -->
   <?php if (!empty($banners)): ?>
@@ -99,14 +100,14 @@ require_once INCLUDES_PATH . '/header.php';
       <p class="greeting-sub">Selamat Datang,</p>
       <h1 class="greeting-name orbitron"><?= e($userName) ?></h1>
     </div>
-    <a href="<?= BASE_URL ?>/pages/vip.php" class="vip-badge vip-<?= (int)SessionManager::get('user_vip',0) ?>">
+    <a href="<?= BASE_URL ?>/pages/vip.php" class="vip-badge vip-<?= (int)SessionManager::get('user_vip',0) ?>" style="box-shadow:0 0 14px rgba(0,212,255,0.25);">
       VIP <?= (int)SessionManager::get('user_vip',0) ?>
     </a>
   </div>
 
   <!-- Wallet Cards -->
   <div class="wallet-cards">
-    <div class="wallet-card main-wallet">
+    <div class="wallet-card main-wallet" style="background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, var(--bg-card) 70%); border-left: 3px solid #00D4FF; box-shadow: 0 4px 24px rgba(0,0,0,0.4), -3px 0 20px rgba(0,212,255,0.15);">
       <div class="wallet-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="15" rx="3" stroke="#00D4FF" stroke-width="2"/><path d="M2 10h20" stroke="#00D4FF" stroke-width="2"/><circle cx="17" cy="15" r="1.5" fill="#00D4FF"/></svg>
       </div>
@@ -116,7 +117,7 @@ require_once INCLUDES_PATH . '/header.php';
       </div>
       <a href="<?= BASE_URL ?>/pages/withdraw.php" class="btn btn-sm btn-outline-cyan">Tarik</a>
     </div>
-    <div class="wallet-card free-wallet">
+    <div class="wallet-card free-wallet" style="background: linear-gradient(135deg, rgba(123,47,255,0.1) 0%, var(--bg-card) 70%); border-left: 3px solid #7B2FFF; box-shadow: 0 4px 24px rgba(0,0,0,0.4), -3px 0 20px rgba(123,47,255,0.15);">
       <div class="wallet-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#7B2FFF" stroke-width="2"/><path d="M12 8v4l3 3" stroke="#7B2FFF" stroke-width="2" stroke-linecap="round"/></svg>
       </div>
@@ -129,8 +130,8 @@ require_once INCLUDES_PATH . '/header.php';
   </div>
 
   <!-- Saldo Gratis Notice -->
-  <div class="notice-banner notice-info">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#00D4FF" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#00D4FF" stroke-width="2" stroke-linecap="round"/></svg>
+  <div class="notice-banner notice-info" style="margin: 0 16px 12px; border-radius: 12px; border-left: 3px solid #FF9500; background: rgba(255,149,0,0.08); color: rgba(255,149,0,0.9);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF9500" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#FF9500" stroke-width="2" stroke-linecap="round"/></svg>
     <span>Saldo gratis <strong>hanya untuk membeli paket</strong> dan <strong>tidak bisa ditarik</strong>.</span>
   </div>
 
@@ -156,16 +157,16 @@ require_once INCLUDES_PATH . '/header.php';
     <form method="post" action="" id="claimAllForm" class="claim-form">
       <?= CSRF::field() ?>
       <button type="submit" name="claim_all" value="1"
-        class="btn btn-primary btn-full btn-lg btn-glow <?= !$canClaim ? 'btn-disabled' : '' ?>"
+        class="btn btn-primary btn-full btn-lg btn-claim-profit btn-glow <?= !$canClaim ? 'btn-disabled' : '' ?>"
         <?= !$canClaim ? 'disabled' : '' ?> id="claimAllBtn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00D4FF"/></svg>
         <?= $canClaim ? 'Klaim Profit Harian' : 'Sudah Diklaim' ?>
       </button>
     </form>
     <?php if (!$canClaim): ?>
-    <div class="countdown-wrap">
-      <span class="countdown-label">Klaim berikutnya dalam:</span>
-      <span class="countdown-timer orbitron" id="globalCountdown" data-seconds="<?= $remainingSecs ?>">--:--:--</span>
+    <div class="countdown-wrap" style="background: rgba(255,149,0,0.06); border: 1px solid rgba(255,149,0,0.2); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+      <span class="countdown-label" style="font-size:12px; color: var(--text-muted);">⏳ Klaim berikutnya dalam:</span>
+      <span class="countdown-timer orbitron" id="globalCountdown" data-seconds="<?= $remainingSecs ?>" style="font-size:20px; color:#FF9500; text-shadow:0 0 12px rgba(255,149,0,0.5); letter-spacing:2px;">--:--:--</span>
     </div>
     <?php endif; ?>
   </div>
@@ -333,4 +334,21 @@ function triggerCoinBurst() {
 }
 </script>
 
+<style>
+/* Dashboard premium overrides */
+.dashboard-greeting { position: relative; z-index: 1; }
+.greeting-name { background: linear-gradient(135deg, #F1F5F9, #00D4FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-card.profit  { border-top: 2px solid rgba(0,212,255,0.3); }
+.stat-card.total   { border-top: 2px solid rgba(123,47,255,0.3); }
+.package-card      { position: relative; overflow: hidden; }
+.package-card .scan-line { display: block; }
+.claim-section { position: relative; z-index: 1; }
+.btn-claim-profit:disabled { animation: none !important; opacity: 0.5; }
+.quick-icon.bg-cyan   { box-shadow: 0 0 16px rgba(0,212,255,0.2); }
+.quick-icon.bg-purple { box-shadow: 0 0 16px rgba(123,47,255,0.2); }
+.quick-icon.bg-gold   { box-shadow: 0 0 16px rgba(255,215,0,0.2); }
+.quick-icon.bg-green  { box-shadow: 0 0 16px rgba(0,230,118,0.2); }
+.quick-icon.bg-teal   { box-shadow: 0 0 16px rgba(0,180,180,0.2); }
+</style>
 <?php require_once INCLUDES_PATH . '/footer.php'; ?>
+
